@@ -31,7 +31,7 @@ public class ThreadsGUI extends JFrame {
 	 */
 	public ThreadsGUI() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ThreadsGUI.class.getResource("/com/sun/javafx/webkit/prism/resources/mediaPlayDisabled.png")));
-		setTitle(" Lyrics");
+		setTitle("Lyrics Threads");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

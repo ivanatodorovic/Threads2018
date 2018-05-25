@@ -50,6 +50,17 @@ public class Synchronizer {
 		sing(lyrics, delay);
 	}
 
+	public synchronized void singFourthVoice(String lyrics, int delay) {
+		while (counter != 3) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		sing(lyrics, delay);
+	}
+
 	private void sing(String lyrics, int delay) {
 		textPane.setText(textPane.getText() + lyrics + "\n");
 		try {
@@ -57,7 +68,7 @@ public class Synchronizer {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		counter = (counter + 1) % 3;
+		counter = (counter + 1) % 4;
 		notifyAll();
 	}
 

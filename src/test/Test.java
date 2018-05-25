@@ -19,24 +19,28 @@ public class Test {
 
 	private Singer pattiSmith;
 	private Singer bruceSpringsteen;
+	private Singer robbieWilliams;
 	private Singer avicii;
 
 	private void initializeSingingInThreads(JTextPane textPane) {
 		String lyrics1 = "Because the night";
 		String lyrics2 = "Belongs to lovers";
-		String lyrics3 = "Through the darkness you'd hide with me\n" + "Like the wind we'd be wild and free";
+		String lyrics3 ="The rain was never cold when I was young\n" + 
+				"I'm still young we're still young";	
+		String lyrics4 = "Through the darkness you'd hide with me\n" + "Like the wind we'd be wild and free";
 
 		boolean stopIt = false;
 		Synchronizer synch = new Synchronizer(0, textPane);
 
 		Performance firstVoicePerformance = new Performance(lyrics1, 1500);
 		Performance secondVoicePerformance = new Performance(lyrics2, 1500);
-		Performance thirdVoicePerformance = new Performance(lyrics3, 1500);
-
+		Performance thirdVoicePerformance = new Performance(lyrics3, 2000);
+		Performance fourthVoicePerformance = new Performance(lyrics4, 2000);
+		
 		pattiSmith = new Singer("Patti Smith", Voice.FIRST, firstVoicePerformance, stopIt, synch);
 		bruceSpringsteen = new Singer("Bruce Springsteen", Voice.SECOND, secondVoicePerformance, stopIt, synch);
-		avicii = new Singer("Avicii", Voice.THIRD, thirdVoicePerformance, stopIt, synch);
-
+		robbieWilliams = new Singer("Robbie Williams", Voice.THIRD, thirdVoicePerformance, stopIt, synch);
+		avicii = new Singer("Avicii", Voice.FOURTH,fourthVoicePerformance, stopIt, synch);
 	}
 
 	public void testSingInThreads(JTextPane textPane) {
@@ -45,6 +49,7 @@ public class Test {
 
 		pattiSmith.start();
 		bruceSpringsteen.start();
+		robbieWilliams.start();
 		avicii.start();
 
 //		IN.nextLine();
@@ -103,6 +108,7 @@ public class Test {
 	public void stopThreads() {
 		pattiSmith.setStopIt(true);
 		bruceSpringsteen.setStopIt(true);
+		robbieWilliams.setStopIt(true);
 		avicii.setStopIt(true);
 	}
 
