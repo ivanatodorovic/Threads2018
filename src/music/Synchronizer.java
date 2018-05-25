@@ -51,7 +51,7 @@ public class Synchronizer {
 	}
 
 	private void sing(String lyrics, int delay) {
-		System.out.println(textPane.getText() + lyrics + "\n");
+		textPane.setText(textPane.getText() + lyrics + "\n");
 		try {
 			wait(delay);
 		} catch (InterruptedException e) {

@@ -47,10 +47,10 @@ public class Test {
 		bruceSpringsteen.start();
 		avicii.start();
 
-		IN.nextLine();
-		pattiSmith.setStopIt(true);
-		bruceSpringsteen.setStopIt(true);
-		avicii.setStopIt(true);
+//		IN.nextLine();
+//		pattiSmith.setStopIt(true);
+//		bruceSpringsteen.setStopIt(true);
+//		avicii.setStopIt(true);
 	}
 
 	public void simpleDelay() {
