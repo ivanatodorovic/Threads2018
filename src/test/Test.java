@@ -6,6 +6,8 @@ package test;
 
 import java.util.Scanner;
 
+import javax.swing.JTextPane;
+
 import music.Performance;
 import music.Singer;
 import music.Synchronizer;
@@ -19,13 +21,13 @@ public class Test {
 	private Singer bruceSpringsteen;
 	private Singer avicii;
 
-	private void initializeSingingInThreads() {
+	private void initializeSingingInThreads(JTextPane textPane) {
 		String lyrics1 = "Because the night";
 		String lyrics2 = "Belongs to lovers";
 		String lyrics3 = "Through the darkness you'd hide with me\n" + "Like the wind we'd be wild and free";
 
 		boolean stopIt = false;
-		Synchronizer synch = new Synchronizer(0);
+		Synchronizer synch = new Synchronizer(0, textPane);
 
 		Performance firstVoicePerformance = new Performance(lyrics1, 1500);
 		Performance secondVoicePerformance = new Performance(lyrics2, 1500);
@@ -37,9 +39,9 @@ public class Test {
 
 	}
 
-	public void testSingInThreads() {
+	public void testSingInThreads(JTextPane textPane) {
 
-		initializeSingingInThreads();
+		initializeSingingInThreads(textPane);
 
 		pattiSmith.start();
 		bruceSpringsteen.start();
@@ -96,6 +98,12 @@ public class Test {
 			e.printStackTrace();
 		}
 		w2.start();
+	}
+
+	public void stopThreads() {
+		pattiSmith.setStopIt(true);
+		bruceSpringsteen.setStopIt(true);
+		avicii.setStopIt(true);
 	}
 
 }

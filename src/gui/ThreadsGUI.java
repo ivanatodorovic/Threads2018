@@ -10,6 +10,10 @@ import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+import java.awt.Frame;
+import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ThreadsGUI extends JFrame {
 
@@ -21,27 +25,13 @@ public class ThreadsGUI extends JFrame {
 	private JButton btnExit;
 	private JTextPane textPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ThreadsGUI frame = new ThreadsGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
 	public ThreadsGUI() {
-		setTitle("                                                         Lyrics");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ThreadsGUI.class.getResource("/com/sun/javafx/webkit/prism/resources/mediaPlayDisabled.png")));
+		setTitle(" Lyrics");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -72,6 +62,11 @@ public class ThreadsGUI extends JFrame {
 	private JButton getBtnStart() {
 		if (btnStart == null) {
 			btnStart = new JButton("Start");
+			btnStart.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				GUIKontroler.testSing();
+				}
+			});
 			btnStart.setBounds(41, 25, 89, 23);
 		}
 		return btnStart;
@@ -79,6 +74,11 @@ public class ThreadsGUI extends JFrame {
 	private JButton getBtnStop() {
 		if (btnStop == null) {
 			btnStop = new JButton("Stop");
+			btnStop.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				GUIKontroler.testStopThreads();
+				}
+			});
 			btnStop.setBounds(188, 25, 89, 23);
 		}
 		return btnStop;
@@ -86,12 +86,17 @@ public class ThreadsGUI extends JFrame {
 	private JButton getBtnExit() {
 		if (btnExit == null) {
 			btnExit = new JButton("Exit");
+			btnExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+				}
+			});
 			btnExit.setPreferredSize(new Dimension(40, 40));
 			btnExit.setBounds(325, 25, 89, 23);
 		}
 		return btnExit;
 	}
-	private JTextPane getTextPane() {
+	public JTextPane getTextPane() {
 		if (textPane == null) {
 			textPane = new JTextPane();
 		}

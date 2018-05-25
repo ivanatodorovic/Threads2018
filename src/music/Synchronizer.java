@@ -4,13 +4,16 @@
  */
 package music;
 
+import javax.swing.JTextPane;
+
 public class Synchronizer {
 
-	private boolean firstVoiceFlag;
+	private JTextPane textPane;
 	private int counter;
 
-	public Synchronizer(int counter) {
+	public Synchronizer(int counter, JTextPane textPane) {
 		super();
+		this.textPane = textPane;
 		this.counter = counter;
 	}
 
@@ -48,7 +51,7 @@ public class Synchronizer {
 	}
 
 	private void sing(String lyrics, int delay) {
-		System.out.println(lyrics);
+		System.out.println(textPane.getText() + lyrics + "\n");
 		try {
 			wait(delay);
 		} catch (InterruptedException e) {
